@@ -12,4 +12,8 @@ target_include_directories(${TARGET_NAME}
     PUBLIC "include" ${INCLUDE_DIRECTORIES_TO_PROPAGATE}
 )
 
+target_link_libraries(${TARGET_NAME}
+    GTest::gmock
+)
+
 cmake_language(CALL ${PROJECT_NAME}_set_target_cpp_compiler_flags ${TARGET_NAME})
