@@ -17,7 +17,7 @@ protected:
     std::string               testFullName;
 
 public:
-    static int  Dummy();
+    static int   Dummy();
     static void  SetUpTestSuite();
     static void  TearDownTestSuite();
     virtual void SetUp() override;
