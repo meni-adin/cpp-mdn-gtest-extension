@@ -11,6 +11,10 @@
 # include <windows.h>
 #endif  // OS
 
+int GTestExtension::Dummy() {
+    return 42;
+}
+
 void GTestExtension::SetUpTestSuite() {
     initTestSuiteName();
 
