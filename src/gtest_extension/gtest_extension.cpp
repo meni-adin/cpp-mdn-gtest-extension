@@ -91,11 +91,17 @@ void GTestExtension::initTestFullName() {
 }
 
 std::string GTestExtension::prepareCommandWithArguments(const fs::path &executable, const std::vector<std::string> &args) {
+    std::string result;
+
     if (args.empty()) {
         return executable;
     }
 
-    return std::string{executable} + " " + std::accumulate(std::next(args.begin()), args.end(), args[0], [](std::string string1, const std::string &string2) {
-               return std::move(string1) + " " + string2;
-           });
+    result += executable;
+    for (const auto &arg : args) {
+        result += " ";
+        result += arg;
+    }
+
+    return result;
 }
