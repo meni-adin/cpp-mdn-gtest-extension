@@ -17,16 +17,16 @@ protected:
     std::string               testFullName;
 
 public:
-    static int   Dummy();
-    static void  SetUpTestSuite();
-    static void  TearDownTestSuite();
-    virtual void SetUp() override;
-    virtual void TearDown() override;
+    static int  Dummy();
+    static void SetUpTestSuite();
+    static void TearDownTestSuite();
+    void        SetUp() override;
+    void        TearDown() override;
 
-    static void initTestSuiteName();
-    static void initTestSuitePaths();
-    void        initTestFullName();
-    std::string prepareCommandWithArguments(fs::path executable, const std::vector<std::string> &args);
+    static void        initTestSuiteName();
+    static void        initTestSuitePaths();
+    void               initTestFullName();
+    static std::string prepareCommandWithArguments(const fs::path &executable, const std::vector<std::string> &args);
 };
 
 #endif  // GTEST_EXTENSION_HPP

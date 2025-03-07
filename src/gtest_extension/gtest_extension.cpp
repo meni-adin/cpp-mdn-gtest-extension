@@ -12,7 +12,8 @@
 #endif  // OS
 
 int GTestExtension::Dummy() {
-    return 42;
+    constexpr int result = 42;
+    return result;
 }
 
 void GTestExtension::SetUpTestSuite() {
@@ -83,12 +84,12 @@ void GTestExtension::initTestFullName() {
     testFullName += testInfo->name();
 }
 
-std::string GTestExtension::prepareCommandWithArguments(fs::path executable, const std::vector<std::string> &args) {
+std::string GTestExtension::prepareCommandWithArguments(const fs::path &executable, const std::vector<std::string> &args) {
     if (args.empty()) {
         return executable;
     }
 
-    return std::string{executable} + " " + std::accumulate(std::next(args.begin()), args.end(), args[0], [](std::string a, std::string b) {
-               return std::move(a) + " " + b;
+    return std::string{executable} + " " + std::accumulate(std::next(args.begin()), args.end(), args[0], [](std::string string1, const std::string &string2) {
+               return std::move(string1) + " " + string2;
            });
 }

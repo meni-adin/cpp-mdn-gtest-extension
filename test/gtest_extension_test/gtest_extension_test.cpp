@@ -8,7 +8,7 @@ using namespace testing;
 class GTestExtensionTest : public ::testing::Test {};
 
 TEST_F(GTestExtensionTest, Dummy) {
-    int dummy = GTestExtension::Dummy();
+    const int dummy = GTestExtension::Dummy();
     ASSERT_EQ(dummy, 42);
 }
 
