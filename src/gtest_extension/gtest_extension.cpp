@@ -67,7 +67,13 @@ void GTestExtension::initTestSuitePaths() {
     testExecutablePath = fs::path{pathBuffer};
     free(pathBuffer);
 #elif defined _WIN32
-    testExecutablePath = fs::path{_pgmptr};
+    char   *value;
+    errno_t result;
+
+    result = _get_pgmptr(&value);
+    ASSERT_EQ(result, 0);
+
+    testExecutablePath = fs::path{value};
 #endif  // OS
     testExecutableDirPath = testExecutablePath.parent_path();
     testOutputDirPath     = testExecutableDirPath / "tests_output";
