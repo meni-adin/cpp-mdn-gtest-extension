@@ -94,10 +94,10 @@ std::string GTestExtension::prepareCommandWithArguments(const fs::path &executab
     std::string result;
 
     if (args.empty()) {
-        return executable;
+        return executable.string();
     }
 
-    result += std::string{executable};
+    result += executable.string();
     for (const auto &arg : args) {
         result += " ";
         result += arg;
