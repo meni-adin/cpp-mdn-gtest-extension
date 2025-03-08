@@ -8,8 +8,10 @@
 #elif defined __APPLE__
 # include <mach-o/dyld.h>
 #elif defined _WIN32
-# include <windows.h>
+# include <Windows.h>
 #endif  // OS
+
+namespace fs = std::filesystem;
 
 int GTestExtension::Dummy() {
     constexpr int result = 42;
