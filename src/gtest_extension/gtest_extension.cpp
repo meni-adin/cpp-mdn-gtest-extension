@@ -8,8 +8,16 @@
 #elif defined __APPLE__
 # include <mach-o/dyld.h>
 #elif defined _WIN32
-# include <windows.h>
+# include <Windows.h>
 #endif  // OS
+
+using namespace testing;
+namespace fs = std::filesystem;
+
+int GTestExtension::Dummy() {
+    constexpr int result = 42;
+    return result;
+}
 
 void GTestExtension::SetUpTestSuite() {
     initTestSuiteName();
@@ -62,7 +70,13 @@ void GTestExtension::initTestSuitePaths() {
     testExecutablePath = fs::path{pathBuffer};
     free(pathBuffer);
 #elif defined _WIN32
-    testExecutablePath = fs::path{_pgmptr};
+    char   *value;
+    errno_t result;
+
+    result = _get_pgmptr(&value);
+    ASSERT_EQ(result, 0);
+
+    testExecutablePath = fs::path{value};
 #endif  // OS
     testExecutableDirPath = testExecutablePath.parent_path();
     testOutputDirPath     = testExecutableDirPath / "tests_output";
@@ -79,12 +93,18 @@ void GTestExtension::initTestFullName() {
     testFullName += testInfo->name();
 }
 
-std::string GTestExtension::prepareCommandWithArguments(fs::path executable, const std::vector<std::string> &args) {
+std::string GTestExtension::prepareCommandWithArguments(const fs::path &executable, const std::vector<std::string> &args) {
+    std::string result;
+
     if (args.empty()) {
-        return executable;
+        return executable.string();
     }
 
-    return std::string{executable} + " " + std::accumulate(std::next(args.begin()), args.end(), args[0], [](std::string a, std::string b) {
-               return std::move(a) + " " + b;
-           });
+    result += executable.string();
+    for (const auto &arg : args) {
+        result += " ";
+        result += arg;
+    }
+
+    return result;
 }
