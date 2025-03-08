@@ -5,8 +5,6 @@
 #include <filesystem>
 #include <gmock/gmock.h>
 
-using namespace testing;
-
 class GTestExtension : public ::testing::Test {
 protected:
     static inline std::filesystem::path testExecutablePath;

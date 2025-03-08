@@ -11,6 +11,7 @@
 # include <Windows.h>
 #endif  // OS
 
+using namespace testing;
 namespace fs = std::filesystem;
 
 int GTestExtension::Dummy() {

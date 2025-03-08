@@ -18,6 +18,7 @@ Checks: >-
   -clang-diagnostic-declaration-after-statement,
   -clang-diagnostic-error,
   -clang-diagnostic-exit-time-destructors,
+  -clang-diagnostic-global-constructors,
   -clang-diagnostic-pre-c++17-compat,
   -clang-diagnostic-pre-c++20-compat-pedantic,
   -clang-diagnostic-unsafe-buffer-usage,
