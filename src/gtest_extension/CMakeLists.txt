@@ -8,6 +8,12 @@ add_library(${TARGET_NAME} STATIC
     ${TARGET_SOURCES}
 )
 
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    target_compile_options(${TARGET_NAME} PRIVATE
+        /wd5045
+    )
+endif()
+
 target_include_directories(${TARGET_NAME}
     PUBLIC "include" ${INCLUDE_DIRECTORIES_TO_PROPAGATE}
 )
