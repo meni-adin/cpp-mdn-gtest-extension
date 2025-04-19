@@ -1,9 +1,11 @@
 
-#ifndef GTEST_EXTENSION_HPP
-#define GTEST_EXTENSION_HPP
+#ifndef MDN_GTEST_EXTENSION_HPP
+#define MDN_GTEST_EXTENSION_HPP
 
 #include <filesystem>
 #include <gmock/gmock.h>
+
+namespace mdn {
 
 class GTestExtension : public ::testing::Test {
 protected:
@@ -26,4 +28,6 @@ public:
     static std::string prepareCommandWithArguments(const std::filesystem::path &executable, const std::vector<std::string> &args);
 };
 
-#endif  // GTEST_EXTENSION_HPP
+}  // namespace mdn
+
+#endif  // MDN_GTEST_EXTENSION_HPP

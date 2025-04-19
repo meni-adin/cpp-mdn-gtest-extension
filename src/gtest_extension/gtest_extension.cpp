@@ -1,5 +1,5 @@
 
-#include "gtest_extension.hpp"
+#include "mdn/gtest_extension.hpp"
 
 #include <numeric>
 
@@ -14,12 +14,12 @@
 using namespace testing;
 namespace fs = std::filesystem;
 
-int GTestExtension::Dummy() {
+int mdn::GTestExtension::Dummy() {
     constexpr int result = 42;
     return result;
 }
 
-void GTestExtension::SetUpTestSuite() {
+void mdn::GTestExtension::SetUpTestSuite() {
     initTestSuiteName();
 
     ASSERT_NO_FATAL_FAILURE(initTestSuitePaths());
@@ -29,21 +29,21 @@ void GTestExtension::SetUpTestSuite() {
     }
 }
 
-void GTestExtension::TearDownTestSuite() {
+void mdn::GTestExtension::TearDownTestSuite() {
 }
 
-void GTestExtension::SetUp() {
+void mdn::GTestExtension::SetUp() {
     ASSERT_NO_FATAL_FAILURE(initTestFullName());
 }
 
-void GTestExtension::TearDown() {
+void mdn::GTestExtension::TearDown() {
 }
 
-void GTestExtension::initTestSuiteName() {
+void mdn::GTestExtension::initTestSuiteName() {
     testSuiteName = ::testing::UnitTest::GetInstance()->current_test_suite()->name();
 }
 
-void GTestExtension::initTestSuitePaths() {
+void mdn::GTestExtension::initTestSuitePaths() {
 #if defined __linux__
     std::array<char, PATH_MAX> pathBuffer{};
     ssize_t                    count;
@@ -82,7 +82,7 @@ void GTestExtension::initTestSuitePaths() {
     testOutputDirPath     = testExecutableDirPath / "tests_output";
 }
 
-void GTestExtension::initTestFullName() {
+void mdn::GTestExtension::initTestFullName() {
     const ::testing::TestInfo *testInfo;
 
     testInfo = UnitTest::GetInstance()->current_test_info();
@@ -93,7 +93,7 @@ void GTestExtension::initTestFullName() {
     testFullName += testInfo->name();
 }
 
-std::string GTestExtension::prepareCommandWithArguments(const fs::path &executable, const std::vector<std::string> &args) {
+std::string mdn::GTestExtension::prepareCommandWithArguments(const fs::path &executable, const std::vector<std::string> &args) {
     std::string result;
 
     if (args.empty()) {
