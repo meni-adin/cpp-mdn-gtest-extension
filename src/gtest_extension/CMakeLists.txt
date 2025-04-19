@@ -1,4 +1,4 @@
-set(TARGET_NAME gtest_extension)
+set(TARGET_NAME mdn_gtest_extension)
 
 set(TARGET_SOURCES
     "gtest_extension.cpp"

@@ -1,14 +1,14 @@
 
 #include <gmock/gmock.h>
 
-#include "gtest_extension.hpp"
+#include "mdn/gtest_extension.hpp"
 
 using namespace testing;
 
 class GTestExtensionTest : public ::testing::Test {};
 
 TEST_F(GTestExtensionTest, Dummy) {
-    const int dummy = GTestExtension::Dummy();
+    const int dummy = mdn::GTestExtension::Dummy();
     ASSERT_EQ(dummy, 42);
 }
 

@@ -7,7 +7,7 @@
             "generator": "Ninja",
             "cacheVariables": {
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-                "CPP_GTEST_EXTENSION_ENABLE_TESTS": "ON"
+                "MDN_GTEST_EXTENSION_ENABLE_TESTS": "ON"
             }
         },
         {
@@ -15,7 +15,7 @@
             "hidden": true,
             "inherits": ["config-common"],
             "cacheVariables": {
-                "CPP_GTEST_EXTENSION_SAFE_MODE": {
+                "MDN_GTEST_EXTENSION_SAFE_MODE": {
                     "type": "BOOL",
                     "value": "ON"
                 },
@@ -27,7 +27,7 @@
             "hidden": true,
             "inherits": ["config-common"],
             "cacheVariables": {
-                "CPP_GTEST_EXTENSION_SAFE_MODE": {
+                "MDN_GTEST_EXTENSION_SAFE_MODE": {
                     "type": "BOOL",
                     "value": "OFF"
                 },
@@ -39,7 +39,7 @@
             "hidden": true,
             "inherits": ["config-common"],
             "cacheVariables": {
-                "SANITIZED_BUILD": {
+                "MDN_GTEST_EXTENSION_SANITIZED_BUILD": {
                     "type": "BOOL",
                     "value": "ON"
                 }
@@ -50,7 +50,7 @@
             "hidden": true,
             "inherits": ["config-common"],
             "cacheVariables": {
-                "SANITIZED_BUILD": {
+                "MDN_GTEST_EXTENSION_SANITIZED_BUILD": {
                     "type": "BOOL",
                     "value": "OFF"
                 }

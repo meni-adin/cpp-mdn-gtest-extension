@@ -1,4 +1,4 @@
-set(TARGET_NAME gtest_extension_test)
+set(TARGET_NAME mdn_gtest_extension_test)
 
 include(GoogleTest)
 
@@ -12,7 +12,7 @@ add_executable(${TARGET_NAME}
 
 target_link_libraries(${TARGET_NAME}
     GTest::gmock
-    gtest_extension
+    mdn_gtest_extension
 )
 
 cmake_language(CALL ${PROJECT_NAME}_set_target_cpp_compiler_flags ${TARGET_NAME})
